@@ -16,20 +16,21 @@ public class BinaryTree {
     }
 
         public Node insert(Node node, int data){
+
             if(node == null){
                 node = new Node(data);
             }
-            else{
-                if(data <= node.data){
-                    //System.out.println("insert");
-                    node.leftChild = insert(node.leftChild,data);
-                }
-                else if(data > node.data){
-                    //System.out.println("insert");
-                    node.rightChild =insert(node.rightChild,data);
-                }
 
+            else {
+                if (data <= node.data) {
+                    //System.out.println("insert");
+                    node.leftChild = insert(node.leftChild, data);
+                } else if (data > node.data) {
+                    //System.out.println("insert");
+                    node.rightChild = insert(node.rightChild, data);
+                }
             }
+
             return node;
         }
 
@@ -49,7 +50,7 @@ public class BinaryTree {
             //System.out.println("start once..");
 
             if(node == null){
-                System.out.println("root is null");
+                ///System.out.println("root is null");
                 return ;
             }
             else{
@@ -60,7 +61,23 @@ public class BinaryTree {
             }
 
         }
+    public void midTravels(Node node){
 
+        //System.out.println("start once..");
+
+        if(node == null){
+            //System.out.println("root is null");
+            return ;
+        }
+        else{
+            midTravels(node.leftChild);
+            //show(node);     //root node data first
+            System.out.println(node.data);
+            midTravels(node.rightChild);
+
+        }
+
+    }
 
 
 
@@ -72,12 +89,14 @@ public class BinaryTree {
         BinaryTree bt = new BinaryTree();
 
 
-        Node root = new Node(100);
+        Node root = new Node(0);
+
+        root = bt.insert(root,12345);
         root = bt.insert(root,111);
         root = bt.insert(root,222);
         root = bt.insert(root,999);
         root = bt.insert(root,1);
-        bt.preTravels(root);
+        bt.midTravels(root);
     }
 
 
